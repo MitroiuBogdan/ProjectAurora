@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ProjectAurora.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ProjectAurora.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ProjectAuroraEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ProjectAurora">
+      <UniqueIdentifier>{03B906CB-8B4F-3A23-8E70-0FC08771A680}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ProjectAurora\ProjectAurora.Build.cs">
+      <Filter>Source\ProjectAurora</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ProjectAurora\ProjectAurora.cpp">
+      <Filter>Source\ProjectAurora</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAurora\ProjectAurora.h">
+      <Filter>Source\ProjectAurora</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ProjectAurora\ProjectAuroraGameModeBase.cpp">
+      <Filter>Source\ProjectAurora</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAurora\ProjectAuroraGameModeBase.h">
+      <Filter>Source\ProjectAurora</Filter>
+    </ClInclude>
+    <Filter Include="Source\ProjectAurora\Private">
+      <UniqueIdentifier>{551F2839-C4D2-3FF2-8342-3EE6D8645B39}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraCharacter.cpp">
+      <Filter>Source\ProjectAurora\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\ProjectAurora\Public">
+      <UniqueIdentifier>{8AC4D770-FA69-34F9-A58E-816999048D3D}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraCharacter.h">
+      <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
