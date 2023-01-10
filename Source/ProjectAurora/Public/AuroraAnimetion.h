@@ -24,7 +24,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category= Movement)
 	float GroundSpeed;
 
-public:
+	UPROPERTY(BlueprintReadOnly, Category= Movement)
+	bool Is_Falling;
+
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 };

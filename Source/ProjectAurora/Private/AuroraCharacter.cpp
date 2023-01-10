@@ -41,6 +41,8 @@ void AAuroraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis(TEXT("M_R"), this, &AAuroraCharacter::MoveRight);
 	PlayerInputComponent->BindAxis(TEXT("Yaw"), this, &AAuroraCharacter::ViewYaw);
 	PlayerInputComponent->BindAxis(TEXT("Pitch"), this, &AAuroraCharacter::ViewPitch);
+
+	PlayerInputComponent->BindAction(TEXT("JUMP"), IE_Pressed, this, &ACharacter::Jump);
 }
 
 void AAuroraCharacter::MoveForward(float Value)

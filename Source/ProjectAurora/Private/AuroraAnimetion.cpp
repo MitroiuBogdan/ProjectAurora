@@ -25,5 +25,6 @@ void UAuroraAnimetion::NativeUpdateAnimation(float DeltaSeconds)
 	{
 		const FVector Velocity = CharacterMovementComponent->Velocity;
 		GroundSpeed = UKismetMathLibrary::VSizeXY(Velocity);
+		Is_Falling = CharacterMovementComponent->IsFalling();
 	}
 }
