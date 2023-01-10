@@ -11,6 +11,8 @@
     <None Include="..\..\Source\ProjectAuroraEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitignore" />
+    <None Include="..\..\dsa" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -22,6 +24,15 @@
     </None>
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\HoloLens">
+      <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini">
+      <Filter>Config\HoloLens</Filter>
     </None>
     <Filter Include="Source\ProjectAurora">
       <UniqueIdentifier>{03B906CB-8B4F-3A23-8E70-0FC08771A680}</UniqueIdentifier>
@@ -44,12 +55,18 @@
     <Filter Include="Source\ProjectAurora\Private">
       <UniqueIdentifier>{551F2839-C4D2-3FF2-8342-3EE6D8645B39}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraAnimetion.cpp">
+      <Filter>Source\ProjectAurora\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraCharacter.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
     <Filter Include="Source\ProjectAurora\Public">
       <UniqueIdentifier>{8AC4D770-FA69-34F9-A58E-816999048D3D}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraAnimetion.h">
+      <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraCharacter.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>

@@ -172,9 +172,13 @@
     <None Include="..\..\ProjectAurora.uproject"/>
     <None Include="..\..\Source\ProjectAurora.Target.cs"/>
     <None Include="..\..\Source\ProjectAuroraEditor.Target.cs"/>
+    <None Include="..\..\.gitignore"/>
+    <None Include="..\..\dsa"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
+    <None Include="..\..\Config\DefaultInput.ini"/>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini"/>
     <None Include="..\..\Source\ProjectAurora\ProjectAurora.Build.cs"/>
     <ClCompile Include="..\..\Source\ProjectAurora\ProjectAurora.cpp">
       <AdditionalIncludeDirectories>$(NMakeIncludeSearchPath);D:\UE5\UE_5.0\Engine\Source\ThirdParty\mimalloc\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source\Win64;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\cudamanager;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\filebuf;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\foundation;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\pvd;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\task;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\cooking;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\common;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\extensions;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\geometry;</AdditionalIncludeDirectories>
@@ -188,11 +192,17 @@
       <AdditionalOptions>$(AdditionalOptions) /Yu"$(SolutionDir)Intermediate\Build\Win64\ProjectAuroraEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\ProjectAurora\ProjectAuroraGameModeBase.h"/>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraAnimetion.cpp">
+      <AdditionalIncludeDirectories>$(NMakeIncludeSearchPath);D:\UE5\UE_5.0\Engine\Source\ThirdParty\mimalloc\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source\Win64;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\cudamanager;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\filebuf;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\foundation;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\pvd;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\task;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\cooking;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\common;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\extensions;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\geometry;</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(SolutionDir)Intermediate\Build\Win64\ProjectAuroraEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h;$(SolutionDir)Intermediate\Build\Win64\UnrealEditor\Development\ProjectAurora\Definitions.ProjectAurora.h</ForcedIncludeFiles>
+      <AdditionalOptions>$(AdditionalOptions) /Yu"$(SolutionDir)Intermediate\Build\Win64\ProjectAuroraEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraCharacter.cpp">
       <AdditionalIncludeDirectories>$(NMakeIncludeSearchPath);D:\UE5\UE_5.0\Engine\Source\ThirdParty\mimalloc\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source\Win64;D:\UE5\UE_5.0\Engine\Source\ThirdParty\LibTiff\Source;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\cudamanager;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\filebuf;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\foundation;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\pvd;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PxShared\include\task;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\cooking;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\common;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\extensions;D:\UE5\UE_5.0\Engine\Source\ThirdParty\PhysX3\PhysX_3.4\Include\geometry;</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(SolutionDir)Intermediate\Build\Win64\ProjectAuroraEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h;$(SolutionDir)Intermediate\Build\Win64\UnrealEditor\Development\ProjectAurora\Definitions.ProjectAurora.h</ForcedIncludeFiles>
       <AdditionalOptions>$(AdditionalOptions) /Yu"$(SolutionDir)Intermediate\Build\Win64\ProjectAuroraEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"</AdditionalOptions>
     </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraAnimetion.h"/>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraCharacter.h"/>
   </ItemGroup>
   <PropertyGroup>
