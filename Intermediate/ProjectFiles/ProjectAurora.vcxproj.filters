@@ -1465,7 +1465,13 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraAnimetion.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Item.cpp">
+      <Filter>Source\ProjectAurora\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Slash.cpp">
+      <Filter>Source\ProjectAurora\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Weapon.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
     <Filter Include="Source\ProjectAurora\Public">
@@ -1474,7 +1480,13 @@
     <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraAnimetion.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Item.h">
+      <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Slash.h">
+      <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Weapon.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
   </ItemGroup>

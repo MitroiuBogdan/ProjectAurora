@@ -55,7 +55,7 @@ void ASlash::MoveForward(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		AddMovementInput(Direction, Value);
 	}
-	UE_LOG(LogTemp, Warning, TEXT("M_F - %f"), Value);
+	// UE_LOG(LogTemp, Warning, TEXT("M_F - %f"), Value);
 }
 
 void ASlash::MoveRight(float Value)
@@ -69,7 +69,7 @@ void ASlash::MoveRight(float Value)
 			AddMovementInput(Direction, Value);
 		}
 	}
-	UE_LOG(LogTemp, Warning, TEXT("M_F - %f"), Value);
+	// UE_LOG(LogTemp, Warning, TEXT("M_F - %f"), Value);
 }
 
 
