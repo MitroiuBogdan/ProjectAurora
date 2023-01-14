@@ -2,15 +2,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "AuroraCharacter.generated.h"
+#include "Slash.generated.h"
 
 UCLASS()
-class PROJECTAURORA_API AAuroraCharacter : public ACharacter
+class PROJECTAURORA_API ASlash : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	AAuroraCharacter();
+	ASlash();
 	UPROPERTY(VisibleAnywhere)
 	class USpringArmComponent* CameraBoom;
 	UPROPERTY(VisibleAnywhere)

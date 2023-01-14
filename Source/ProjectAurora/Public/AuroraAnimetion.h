@@ -16,7 +16,7 @@ class PROJECTAURORA_API UAuroraAnimetion : public UAnimInstance
 
 public:
 	UPROPERTY(BlueprintReadOnly)
-	class AAuroraCharacter* AuroraCharacter;
+	class ASlash* AuroraCharacter;
 
 	UPROPERTY(BlueprintReadOnly, Category= Movement)
 	class UCharacterMovementComponent* CharacterMovementComponent;

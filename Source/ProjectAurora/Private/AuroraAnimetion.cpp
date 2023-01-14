@@ -3,7 +3,7 @@
 
 #include "AuroraAnimetion.h"
 
-#include "AuroraCharacter.h"
+#include "Slash.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -11,7 +11,7 @@ void UAuroraAnimetion::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
 
-	AuroraCharacter = Cast<AAuroraCharacter>(TryGetPawnOwner());
+	AuroraCharacter = Cast<ASlash>(TryGetPawnOwner());
 	if (AuroraCharacter)
 	{
 		CharacterMovementComponent = AuroraCharacter->GetCharacterMovement();

@@ -1,10 +1,11 @@
-#include "AuroraCharacter.h"
+#include "Slash.h"
 
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-AAuroraCharacter::AAuroraCharacter()
+
+ASlash::ASlash()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	bUseControllerRotationPitch = false;
@@ -23,29 +24,29 @@ AAuroraCharacter::AAuroraCharacter()
 	ViewCamera->bUsePawnControlRotation = true;
 }
 
-void AAuroraCharacter::BeginPlay()
+void ASlash::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void AAuroraCharacter::Tick(float DeltaTime)
+void ASlash::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-void AAuroraCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ASlash::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis(TEXT("M_F"), this, &AAuroraCharacter::MoveForward);
-	PlayerInputComponent->BindAxis(TEXT("M_R"), this, &AAuroraCharacter::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("Yaw"), this, &AAuroraCharacter::ViewYaw);
-	PlayerInputComponent->BindAxis(TEXT("Pitch"), this, &AAuroraCharacter::ViewPitch);
+	PlayerInputComponent->BindAxis(TEXT("M_F"), this, &ASlash::MoveForward);
+	PlayerInputComponent->BindAxis(TEXT("M_R"), this, &ASlash::MoveRight);
+	PlayerInputComponent->BindAxis(TEXT("Yaw"), this, &ASlash::ViewYaw);
+	PlayerInputComponent->BindAxis(TEXT("Pitch"), this, &ASlash::ViewPitch);
 
 	PlayerInputComponent->BindAction(TEXT("JUMP"), IE_Pressed, this, &ACharacter::Jump);
 }
 
-void AAuroraCharacter::MoveForward(float Value)
+void ASlash::MoveForward(float Value)
 {
 	if (Controller && Value != 0)
 	{
@@ -57,7 +58,7 @@ void AAuroraCharacter::MoveForward(float Value)
 	UE_LOG(LogTemp, Warning, TEXT("M_F - %f"), Value);
 }
 
-void AAuroraCharacter::MoveRight(float Value)
+void ASlash::MoveRight(float Value)
 {
 	if (Controller && Value != 0)
 	{
@@ -72,12 +73,12 @@ void AAuroraCharacter::MoveRight(float Value)
 }
 
 
-void AAuroraCharacter::ViewYaw(float Value)
+void ASlash::ViewYaw(float Value)
 {
 	AddControllerYawInput(Value);
 }
 
-void AAuroraCharacter::ViewPitch(float Value)
+void ASlash::ViewPitch(float Value)
 {
 	AddControllerPitchInput(Value);
 }
