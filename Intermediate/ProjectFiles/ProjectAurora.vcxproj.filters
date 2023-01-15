@@ -1471,7 +1471,7 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Slash.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjectAurora\Private\Weapon.cpp">
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Sword.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
     <Filter Include="Source\ProjectAurora\Public">
@@ -1486,7 +1486,7 @@
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Slash.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ProjectAurora\Public\Weapon.h">
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Sword.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
   </ItemGroup>
