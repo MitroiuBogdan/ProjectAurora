@@ -19,6 +19,10 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+private:
+	UPROPERTY(VisibleInstanceOnly)
+	class AItem* OverlappingItem;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -26,4 +30,9 @@ public:
 	virtual void MoveRight(float Value);
 	virtual void ViewYaw(float Value);
 	virtual void ViewPitch(float Value);
+	void FKeyPressed();
+
+public:
+	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }
+	FORCEINLINE AItem* GetOverlappingItem() { return this->OverlappingItem; }
 };

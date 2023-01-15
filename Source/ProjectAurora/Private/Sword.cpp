@@ -14,13 +14,6 @@ void ASword::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("SWORD"));
 	}
-
-	ASlash* Slash = Cast<ASlash>(OtherActor);
-	if (Slash)
-	{
-		FAttachmentTransformRules TransformRules(EAttachmentRule::SnapToTarget,true);
-		ItemMeshComponent->AttachToComponent(Slash->GetMesh(), TransformRules, FName("hand_r_socket"));
-	}
 }
 
 void ASword::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -31,4 +24,10 @@ void ASword::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("SWORD"));
 	}
+}
+
+void ASword::Equip(USceneComponent* InParent, FName SocketName)
+{
+	FAttachmentTransformRules TransformRules(EAttachmentRule::SnapToTarget, true);
+	ItemMeshComponent->AttachToComponent(InParent, TransformRules, SocketName);
 }

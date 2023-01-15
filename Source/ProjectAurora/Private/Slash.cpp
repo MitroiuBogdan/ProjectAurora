@@ -1,5 +1,6 @@
 #include "Slash.h"
 
+#include "Sword.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -44,6 +45,7 @@ void ASlash::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("Pitch"), this, &ASlash::ViewPitch);
 
 	PlayerInputComponent->BindAction(TEXT("JUMP"), IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Equip"), IE_Pressed, this, &ASlash::FKeyPressed);
 }
 
 void ASlash::MoveForward(float Value)
@@ -81,4 +83,13 @@ void ASlash::ViewYaw(float Value)
 void ASlash::ViewPitch(float Value)
 {
 	AddControllerPitchInput(Value);
+}
+
+void ASlash::FKeyPressed()
+{
+	ASword* OverlappingWeapon = Cast<ASword>(this->GetOverlappingItem());
+	if (OverlappingWeapon)
+	{
+		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
+	}
 }

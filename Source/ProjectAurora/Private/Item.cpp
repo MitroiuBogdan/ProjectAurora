@@ -1,6 +1,7 @@
 #include "Item.h"
 
 #include "Components/SphereComponent.h"
+#include "Slash.h"
 
 AItem::AItem()
 {
@@ -8,7 +9,6 @@ AItem::AItem()
 	ItemMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ItemMeshComponent"));
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetupAttachment(ItemMeshComponent);
-	
 }
 
 void AItem::BeginPlay()
@@ -31,6 +31,12 @@ void AItem::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Oth
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnBeginOverlap"));
 	}
+	
+	ASlash* Slash = Cast<ASlash>(OtherActor);
+	if (Slash)
+	{
+		Slash->SetOverlappingItem(this);
+	}
 }
 
 void AItem::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -39,5 +45,11 @@ void AItem::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Other
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnEndOverlap"));
+	}
+	
+	ASlash* Slash = Cast<ASlash>(OtherActor);
+	if (Slash)
+	{
+		Slash->SetOverlappingItem(nullptr);
 	}
 }
