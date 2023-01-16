@@ -1,10 +1,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "enums/ECharacterState.h"
 #include "GameFramework/Character.h"
 #include "Slash.generated.h"
-
-
 
 
 UCLASS()
@@ -25,6 +24,7 @@ protected:
 private:
 	UPROPERTY(VisibleInstanceOnly)
 	class AItem* OverlappingItem;
+	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -38,4 +38,5 @@ public:
 public:
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }
 	FORCEINLINE AItem* GetOverlappingItem() { return this->OverlappingItem; }
+	FORCEINLINE ECharacterState GetCharacterState() { return this->CharacterState; }
 };

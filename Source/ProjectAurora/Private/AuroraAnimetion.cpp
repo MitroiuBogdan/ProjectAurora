@@ -11,20 +11,21 @@ void UAuroraAnimetion::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
 
-	AuroraCharacter = Cast<ASlash>(TryGetPawnOwner());
-	if (AuroraCharacter)
+	this->AuroraCharacter = Cast<ASlash>(TryGetPawnOwner());
+	if (this->AuroraCharacter)
 	{
-		CharacterMovementComponent = AuroraCharacter->GetCharacterMovement();
+		this->CharacterMovementComponent = this->AuroraCharacter->GetCharacterMovement();
 	}
 }
 
 void UAuroraAnimetion::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
-	if (CharacterMovementComponent)
+	if (this->CharacterMovementComponent)
 	{
-		const FVector Velocity = CharacterMovementComponent->Velocity;
-		GroundSpeed = UKismetMathLibrary::VSizeXY(Velocity);
-		Is_Falling = CharacterMovementComponent->IsFalling();
+		const FVector Velocity = this->CharacterMovementComponent->Velocity;
+		this->GroundSpeed = UKismetMathLibrary::VSizeXY(Velocity);
+		this->Is_Falling = this->CharacterMovementComponent->IsFalling();
+		this->CharacterState = this->AuroraCharacter->GetCharacterState();
 	}
 }

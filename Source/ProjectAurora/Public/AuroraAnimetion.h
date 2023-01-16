@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "enums/ECharacterState.h"
 #include "AuroraAnimetion.generated.h"
 
 /**
@@ -26,6 +27,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category= Movement)
 	bool Is_Falling;
+
+	ECharacterState CharacterState;
 
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
