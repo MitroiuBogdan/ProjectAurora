@@ -28,6 +28,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category= Movement)
 	bool Is_Falling;
 
+	UPROPERTY(BlueprintReadOnly, Category= "Movement | Character State")
 	ECharacterState CharacterState;
 
 	virtual void NativeInitializeAnimation() override;
