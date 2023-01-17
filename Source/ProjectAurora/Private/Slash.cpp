@@ -46,6 +46,7 @@ void ASlash::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction(TEXT("JUMP"), IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Equip"), IE_Pressed, this, &ASlash::FKeyPressed);
+	PlayerInputComponent->BindAction(TEXT("Attack"), IE_Pressed, this, &ASlash::Attack);
 }
 
 void ASlash::MoveForward(float Value)
@@ -93,4 +94,32 @@ void ASlash::FKeyPressed()
 		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
 		this->CharacterState = ECharacterState::ECS_EquippedOneHanded;
 	}
+}
+
+void ASlash::Attack()
+{
+	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
+	if (AnimInstance && this->AttackMontage)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Animation instantiated"));
+		AnimInstance->Montage_Play(this->AttackMontage);
+		// int32 Selection = FMath::RandRange(0, 1);
+		// FName SelectionName = FName();
+		// switch (Selection)
+		// {
+		// case 0:
+		// 	{
+		// 		SelectionName = FName("Primary_Attack_C_Montage'");
+		// 		break;
+		// 	}
+		// case 1:
+		// 	{
+		// 		SelectionName = FName("Primary_Attack_A_Montage");
+		// 		break;
+		// 	}
+		// default: break;
+		// }
+		// AnimInstance->Montage_JumpToSection(SelectionName, AttackMontage);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Attack"));
 }

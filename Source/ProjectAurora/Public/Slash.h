@@ -26,6 +26,10 @@ private:
 	class AItem* OverlappingItem;
 	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
 
+	/**Animation Montages*/
+	UPROPERTY(EditDefaultsOnly, Category= Montages)
+	UAnimMontage* AttackMontage;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -34,6 +38,7 @@ public:
 	virtual void ViewYaw(float Value);
 	virtual void ViewPitch(float Value);
 	void FKeyPressed();
+	void Attack();
 
 public:
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }
