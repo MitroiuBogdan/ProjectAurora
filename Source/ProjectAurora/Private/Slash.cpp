@@ -51,6 +51,7 @@ void ASlash::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ASlash::MoveForward(float Value)
 {
+	if (ActionState == EActionState::EAS_Attacking) { return; }
 	if (Controller && Value != 0)
 	{
 		const FRotator ControlRotation = GetControlRotation();
@@ -63,6 +64,7 @@ void ASlash::MoveForward(float Value)
 
 void ASlash::MoveRight(float Value)
 {
+	if (ActionState == EActionState::EAS_Attacking) { return; }
 	if (Controller && Value != 0)
 	{
 		{
@@ -100,7 +102,7 @@ void ASlash::FKeyPressed()
 void ASlash::Attack()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Attack"))
-	if (ActionState == EActionState::EAS_Unoccupied)
+	if (CanAttack())
 	{
 		PlayAttackMontage();
 		ActionState = EActionState::EAS_Attacking;
@@ -137,4 +139,9 @@ void ASlash::PlayAttackMontage()
 void ASlash::AttackEnd()
 {
 	ActionState = EActionState::EAS_Unoccupied;
+}
+
+bool ASlash::CanAttack()
+{
+	return ActionState == EActionState::EAS_Unoccupied && CharacterState != ECharacterState::ECS_Unequipped;
 }

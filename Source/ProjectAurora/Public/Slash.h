@@ -49,6 +49,7 @@ public:
 	void PlayAttackMontage();
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
+	bool CanAttack();
 
 public:
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }
