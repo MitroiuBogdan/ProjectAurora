@@ -29,3 +29,4 @@ void UAuroraAnimetion::NativeUpdateAnimation(float DeltaSeconds)
 		this->CharacterState = this->AuroraCharacter->GetCharacterState();
 	}
 }
+

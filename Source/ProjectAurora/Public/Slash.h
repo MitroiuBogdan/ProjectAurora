@@ -24,7 +24,9 @@ protected:
 private:
 	UPROPERTY(VisibleInstanceOnly)
 	class AItem* OverlappingItem;
+
 	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
+	EActionState ActionState = EActionState::EAS_Unoccupied;
 
 	/**Animation Montages*/
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
@@ -33,12 +35,20 @@ private:
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	/*Input Functions*/
 	virtual void MoveForward(float Value);
 	virtual void MoveRight(float Value);
 	virtual void ViewYaw(float Value);
 	virtual void ViewPitch(float Value);
 	void FKeyPressed();
 	void Attack();
+
+
+	/*Montages*/
+	void PlayAttackMontage();
+	UFUNCTION(BlueprintCallable)
+	void AttackEnd();
 
 public:
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }

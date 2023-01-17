@@ -96,12 +96,23 @@ void ASlash::FKeyPressed()
 	}
 }
 
+
 void ASlash::Attack()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Attack"))
+	if (ActionState == EActionState::EAS_Unoccupied)
+	{
+		PlayAttackMontage();
+		ActionState = EActionState::EAS_Attacking;
+	}
+}
+
+void ASlash::PlayAttackMontage()
 {
 	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
 	if (AnimInstance && this->AttackMontage)
 	{
-		UE_LOG(LogTemp, Display, TEXT("Animation instantiated"));
+		UE_LOG(LogTemp, Warning, TEXT("Attack montage"))
 		AnimInstance->Montage_Play(this->AttackMontage);
 		// int32 Selection = FMath::RandRange(0, 1);
 		// FName SelectionName = FName();
@@ -120,6 +131,10 @@ void ASlash::Attack()
 		// default: break;
 		// }
 		// AnimInstance->Montage_JumpToSection(SelectionName, AttackMontage);
-	}
-	UE_LOG(LogTemp, Warning, TEXT("Attack"));
+	};
+}
+
+void ASlash::AttackEnd()
+{
+	ActionState = EActionState::EAS_Unoccupied;
 }
