@@ -16,7 +16,7 @@ class PROJECTAURORA_API UAuroraAnimetion : public UAnimInstance
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	class ASlash* AuroraCharacter;
 
 	UPROPERTY(BlueprintReadOnly, Category= Movement)
