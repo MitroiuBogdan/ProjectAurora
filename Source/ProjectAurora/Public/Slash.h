@@ -58,6 +58,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
 	UFUNCTION(BlueprintCallable)
+	void EquipEnd();
+	UFUNCTION(BlueprintCallable)
 	void Arm();
 	UFUNCTION(BlueprintCallable)
 	void Disarm();

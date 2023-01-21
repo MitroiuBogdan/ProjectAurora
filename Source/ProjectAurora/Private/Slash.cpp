@@ -64,7 +64,7 @@ void ASlash::MoveForward(float Value)
 
 void ASlash::MoveRight(float Value)
 {
-	if (ActionState == EActionState::EAS_Attacking) { return; }
+	if (ActionState == EActionState::EAS_Attacking && ActionState == EActionState::EAS_EQUIPPING) { return; }
 	if (Controller && Value != 0)
 	{
 		{
@@ -107,12 +107,14 @@ void ASlash::FKeyPressed()
 			UE_LOG(LogTemp, Warning, TEXT("Unequip"));
 			PlayEquipMontage(FName("UNEQUIP"));
 			CharacterState = ECharacterState::ECS_Unequipped;
+			ActionState = EActionState::EAS_EQUIPPING;
 		}
 		else if (CanArm() && Sword)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Equip"));
 			PlayEquipMontage(FName("EQUIP"));
 			CharacterState = ECharacterState::ECS_EquippedOneHanded;
+			ActionState = EActionState::EAS_EQUIPPING;
 		}
 	}
 }
@@ -170,11 +172,18 @@ void ASlash::AttackEnd()
 	ActionState = EActionState::EAS_Unoccupied;
 }
 
+void ASlash::EquipEnd()
+{
+	ActionState = EActionState::EAS_Unoccupied;
+}
+
+
 void ASlash::Arm()
 {
 	if (Sword)
 	{
 		Sword->AttachMeshToSocket(this->GetMesh(), FName("hand_r_socket"));
+		ActionState = EActionState::EAS_EQUIPPING;
 	}
 }
 
@@ -183,6 +192,7 @@ void ASlash::Disarm()
 	if (Sword)
 	{
 		Sword->AttachMeshToSocket(this->GetMesh(), FName("SPINE_SOCKET"));
+		ActionState = EActionState::EAS_EQUIPPING;
 	}
 }
 
