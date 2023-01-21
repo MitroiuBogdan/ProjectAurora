@@ -90,11 +90,30 @@ void ASlash::ViewPitch(float Value)
 
 void ASlash::FKeyPressed()
 {
+	UE_LOG(LogTemp, Warning, TEXT("FKeyPressed"));
 	ASword* OverlappingWeapon = Cast<ASword>(this->GetOverlappingItem());
-	if (OverlappingWeapon)
+	if (OverlappingWeapon && CharacterState == ECharacterState::ECS_Unequipped)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("FKeyPressed - OverlappingWeapon"));
 		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
+		this->Sword = OverlappingWeapon;
 		this->CharacterState = ECharacterState::ECS_EquippedOneHanded;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("FKeyPressed - Weapon present"));
+		if (CanDisarm())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unequip"));
+			PlayEquipMontage(FName("Unequip"));
+			CharacterState = ECharacterState::ECS_Unequipped;
+		}
+		else if (CanArm() && Sword)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Equip"));
+			PlayEquipMontage(FName("Equip"));
+			CharacterState = ECharacterState::ECS_EquippedOneHanded;
+		}
 	}
 }
 
@@ -136,6 +155,16 @@ void ASlash::PlayAttackMontage()
 	};
 }
 
+void ASlash::PlayEquipMontage(FName SectionName)
+{
+	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
+	if (AnimInstance && this->EquipMontage)
+	{
+		AnimInstance->Montage_Play(this->EquipMontage);
+		// AnimInstance->Montage_JumpToSection(SectionName, EquipMontage);
+	};
+}
+
 void ASlash::AttackEnd()
 {
 	ActionState = EActionState::EAS_Unoccupied;
@@ -144,4 +173,16 @@ void ASlash::AttackEnd()
 bool ASlash::CanAttack()
 {
 	return ActionState == EActionState::EAS_Unoccupied && CharacterState != ECharacterState::ECS_Unequipped;
+}
+
+bool ASlash::CanDisarm()
+{
+	return this->GetCharacterState() != ECharacterState::ECS_Unequipped
+		&& this->ActionState == EActionState::EAS_Unoccupied;
+}
+
+bool ASlash::CanArm()
+{
+	return this->GetCharacterState() == ECharacterState::ECS_Unequipped
+		&& this->ActionState == EActionState::EAS_Unoccupied;
 }

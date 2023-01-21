@@ -24,7 +24,9 @@ protected:
 private:
 	UPROPERTY(VisibleInstanceOnly)
 	class AItem* OverlappingItem;
-
+	UPROPERTY(VisibleInstanceOnly, Category= Weapons)
+	class ASword* Sword;
+	
 	ECharacterState CharacterState = ECharacterState::ECS_Unequipped;
 	EActionState ActionState = EActionState::EAS_Unoccupied;
 
@@ -32,6 +34,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
 	UAnimMontage* AttackMontage;
 
+	UPROPERTY(EditDefaultsOnly, Category= Montages)
+	UAnimMontage* EquipMontage;
+	
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -47,9 +52,14 @@ public:
 
 	/*Montages*/
 	void PlayAttackMontage();
+	void PlayEquipMontage(FName SectionName);
+
+	
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
 	bool CanAttack();
+	bool CanDisarm();
+	bool CanArm();
 
 public:
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { this->OverlappingItem = Item; }

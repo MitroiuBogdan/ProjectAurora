@@ -1489,5 +1489,11 @@
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Sword.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
+    <Filter Include="Source\ProjectAurora\Public\enums">
+      <UniqueIdentifier>{B43D7882-D38A-3929-BB60-3F1D4EF27902}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\enums\ECharacterState.h">
+      <Filter>Source\ProjectAurora\Public\enums</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
