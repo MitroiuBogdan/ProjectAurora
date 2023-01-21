@@ -51,7 +51,7 @@ void ASlash::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ASlash::MoveForward(float Value)
 {
-	if (ActionState == EActionState::EAS_Attacking) { return; }
+	if (ActionState == EActionState::EAS_Attacking || ActionState == EActionState::EAS_EQUIPPING) { return; }
 	if (Controller && Value != 0)
 	{
 		const FRotator ControlRotation = GetControlRotation();
@@ -64,7 +64,7 @@ void ASlash::MoveForward(float Value)
 
 void ASlash::MoveRight(float Value)
 {
-	if (ActionState == EActionState::EAS_Attacking && ActionState == EActionState::EAS_EQUIPPING) { return; }
+	if (ActionState == EActionState::EAS_Attacking || ActionState == EActionState::EAS_EQUIPPING) { return; }
 	if (Controller && Value != 0)
 	{
 		{
