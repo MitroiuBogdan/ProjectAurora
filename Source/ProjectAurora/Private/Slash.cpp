@@ -105,13 +105,13 @@ void ASlash::FKeyPressed()
 		if (CanDisarm())
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Unequip"));
-			PlayEquipMontage(FName("Unequip"));
+			PlayEquipMontage(FName("UNEQUIP"));
 			CharacterState = ECharacterState::ECS_Unequipped;
 		}
 		else if (CanArm() && Sword)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Equip"));
-			PlayEquipMontage(FName("Equip"));
+			PlayEquipMontage(FName("EQUIP"));
 			CharacterState = ECharacterState::ECS_EquippedOneHanded;
 		}
 	}
@@ -161,13 +161,25 @@ void ASlash::PlayEquipMontage(FName SectionName)
 	if (AnimInstance && this->EquipMontage)
 	{
 		AnimInstance->Montage_Play(this->EquipMontage);
-		// AnimInstance->Montage_JumpToSection(SectionName, EquipMontage);
+		AnimInstance->Montage_JumpToSection(SectionName, EquipMontage);
 	};
 }
 
 void ASlash::AttackEnd()
 {
 	ActionState = EActionState::EAS_Unoccupied;
+}
+
+void ASlash::Arm()
+{
+}
+
+void ASlash::Disarm()
+{
+	if (Sword)
+	{
+		Sword->AttachMeshToSocket(this->GetMesh(), FName("SPINE_SOCKET"));
+	}
 }
 
 bool ASlash::CanAttack()

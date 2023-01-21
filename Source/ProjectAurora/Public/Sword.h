@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
+#include "enums/ECharacterState.h"
 #include "Sword.generated.h"
 
 
@@ -9,6 +10,7 @@ UCLASS()
 class PROJECTAURORA_API ASword : public AItem
 {
 	GENERATED_BODY()
+	EItemState SwordState;
 
 protected:
 	virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -20,5 +22,6 @@ protected:
 
 
 public:
-	void Equip(USceneComponent* InParent,FName SocketName);
+	void Equip(USceneComponent* InParent, FName SocketName);
+	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
 };

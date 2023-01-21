@@ -5,6 +5,7 @@
 
 #include "Slash.h"
 
+
 void ASword::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
                             UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
                             const FHitResult& SweepResult)
@@ -26,7 +27,14 @@ void ASword::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	}
 }
 
+
 void ASword::Equip(USceneComponent* InParent, FName SocketName)
+{
+	AttachMeshToSocket(InParent, SocketName);
+	SwordState = EItemState::EIS_Equiped;
+}
+
+void ASword::AttachMeshToSocket(USceneComponent* InParent, FName SocketName)
 {
 	FAttachmentTransformRules TransformRules(EAttachmentRule::SnapToTarget, true);
 	ItemMeshComponent->AttachToComponent(InParent, TransformRules, SocketName);

@@ -57,6 +57,12 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
+	UFUNCTION(BlueprintCallable)
+	void Arm();
+	UFUNCTION(BlueprintCallable)
+	void Disarm();
+
+	
 	bool CanAttack();
 	bool CanDisarm();
 	bool CanArm();
