@@ -92,7 +92,7 @@ void ASlash::FKeyPressed()
 {
 	UE_LOG(LogTemp, Warning, TEXT("FKeyPressed"));
 	ASword* OverlappingWeapon = Cast<ASword>(this->GetOverlappingItem());
-	if (OverlappingWeapon && CharacterState == ECharacterState::ECS_Unequipped)
+	if (OverlappingWeapon && CharacterState == ECharacterState::ECS_Unequipped && Sword == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("FKeyPressed - OverlappingWeapon"));
 		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
@@ -172,6 +172,10 @@ void ASlash::AttackEnd()
 
 void ASlash::Arm()
 {
+	if (Sword)
+	{
+		Sword->AttachMeshToSocket(this->GetMesh(), FName("hand_r_socket"));
+	}
 }
 
 void ASlash::Disarm()
