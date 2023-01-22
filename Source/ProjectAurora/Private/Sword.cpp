@@ -16,7 +16,7 @@ ASword::ASword()
 
 	BoxComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoxComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
-	BoxComponent->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
+	// BoxComponent->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
 
 	StartBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("StartBoxTrace"));
 	EndBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("EndBoxTrace"));

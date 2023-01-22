@@ -2,6 +2,7 @@
 
 #include "Sword.h"
 #include "Camera/CameraComponent.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -97,6 +98,7 @@ void ASlash::FKeyPressed()
 		UE_LOG(LogTemp, Warning, TEXT("FKeyPressed - OverlappingWeapon"));
 		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
 		this->Sword = OverlappingWeapon;
+		this->Sword->GetBoxCollision()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		this->CharacterState = ECharacterState::ECS_EquippedOneHanded;
 	}
 	else
@@ -137,6 +139,28 @@ void ASlash::PlayAttackMontage()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Attack montage"));
 		AnimInstance->Montage_Play(this->AttackMontage);
+		int32 Selection = FMath::RandRange(0, 2);
+		FName SelectionName = FName();
+		switch (Selection)
+		{
+		case 0:
+			{
+				SelectionName = FName("AT_A");
+				break;
+			}
+		case 1:
+			{
+				SelectionName = FName("AT_B");
+				break;
+			}
+		case 2:
+			{
+				SelectionName = FName("AT_C");
+				break;
+			}
+		default: break;
+		}
+		AnimInstance->Montage_JumpToSection(SelectionName, AttackMontage);
 	};
 }
 
@@ -176,6 +200,22 @@ void ASlash::Disarm()
 	{
 		Sword->AttachMeshToSocket(this->GetMesh(), FName("SPINE_SOCKET"));
 		ActionState = EActionState::EAS_EQUIPPING;
+	}
+}
+
+void ASlash::SetWeaponCollisionEnabled(ECollisionEnabled::Type CollisionEnabled)
+{
+	if (Sword && Sword->GetBoxCollision())
+	{
+		Sword->GetBoxCollision()->SetCollisionEnabled(CollisionEnabled);
+	}
+}
+
+void ASlash::SetWeaponCollisionDisabled(ECollisionEnabled::Type CollisionEnabled)
+{
+	if (Sword && Sword->GetBoxCollision())
+	{
+		Sword->GetBoxCollision()->SetCollisionEnabled(CollisionEnabled);
 	}
 }
 

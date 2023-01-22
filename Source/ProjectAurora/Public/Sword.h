@@ -39,4 +39,6 @@ protected:
 public:
 	void Equip(USceneComponent* InParent, FName SocketName);
 	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
+
+	FORCEINLINE UBoxComponent* GetBoxCollision() { return this->BoxComponent; }
 };
