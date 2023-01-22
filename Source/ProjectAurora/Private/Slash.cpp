@@ -135,25 +135,8 @@ void ASlash::PlayAttackMontage()
 	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
 	if (AnimInstance && this->AttackMontage)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Attack montage"))
+		UE_LOG(LogTemp, Warning, TEXT("Attack montage"));
 		AnimInstance->Montage_Play(this->AttackMontage);
-		// int32 Selection = FMath::RandRange(0, 1);
-		// FName SelectionName = FName();
-		// switch (Selection)
-		// {
-		// case 0:
-		// 	{
-		// 		SelectionName = FName("Primary_Attack_C_Montage'");
-		// 		break;
-		// 	}
-		// case 1:
-		// 	{
-		// 		SelectionName = FName("Primary_Attack_A_Montage");
-		// 		break;
-		// 	}
-		// default: break;
-		// }
-		// AnimInstance->Montage_JumpToSection(SelectionName, AttackMontage);
 	};
 }
 

@@ -4,7 +4,15 @@
 #include "Sword.h"
 
 #include "Slash.h"
+#include "Components/BoxComponent.h"
 
+
+ASword::ASword()
+{
+	RootComponent = ItemMeshComponent;
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
+	BoxComponent->SetupAttachment(ItemMeshComponent);
+}
 
 void ASword::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
                             UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
