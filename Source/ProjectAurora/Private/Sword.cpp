@@ -5,6 +5,7 @@
 
 #include "Slash.h"
 #include "Components/BoxComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 
 ASword::ASword()
@@ -27,7 +28,7 @@ ASword::ASword()
 void ASword::BeginPlay()
 {
 	Super::BeginPlay();
-	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &ASword::OnBeginOverlap);
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &ASword::OnBoxOverlap);
 }
 
 void ASword::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -54,6 +55,16 @@ void ASword::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                           int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	UE_LOG(LogTemp, Warning, TEXT("BOX Overlap"));
+	const FVector Start = StartBoxTrace->GetComponentLocation();
+	const FVector End = EndBoxTrace->GetComponentLocation();
+
+	TArray<AActor*> ActorsToIgnore;
+	FHitResult BoxHit;
+	ActorsToIgnore.Add(this);
+	UKismetSystemLibrary::BoxTraceSingle(this, Start, End, FVector(5.f, 5.f, 5.f),
+	                                     StartBoxTrace->GetComponentRotation(), TraceTypeQuery1, false, ActorsToIgnore,
+	                                     EDrawDebugTrace::ForDuration, BoxHit, true);
 }
 
 
