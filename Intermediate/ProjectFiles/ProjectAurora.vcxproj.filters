@@ -1474,6 +1474,12 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Sword.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
+    <Filter Include="Source\ProjectAurora\Private\Interfaces">
+      <UniqueIdentifier>{77205EF3-4151-3F2F-ACE8-C1199D4A0659}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Interfaces\HitInterface.cpp">
+      <Filter>Source\ProjectAurora\Private\Interfaces</Filter>
+    </ClCompile>
     <Filter Include="Source\ProjectAurora\Public">
       <UniqueIdentifier>{8AC4D770-FA69-34F9-A58E-816999048D3D}</UniqueIdentifier>
     </Filter>
@@ -1494,6 +1500,12 @@
     </Filter>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\enums\ECharacterState.h">
       <Filter>Source\ProjectAurora\Public\enums</Filter>
+    </ClInclude>
+    <Filter Include="Source\ProjectAurora\Public\Interfaces">
+      <UniqueIdentifier>{044384CD-F6F6-362B-9421-E8FCE5311D1F}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Interfaces\HitInterface.h">
+      <Filter>Source\ProjectAurora\Public\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
