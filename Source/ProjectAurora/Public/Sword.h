@@ -16,14 +16,25 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sword Box")
 	class UBoxComponent* BoxComponent;
 
+	UPROPERTY(VisibleAnywhere, Category = "Sword Box")
+	class USceneComponent* StartBoxTrace;
+	UPROPERTY(VisibleAnywhere, Category = "Sword Box")
+	class USceneComponent* EndBoxTrace;
+
 protected:
 	ASword();
+	virtual void BeginPlay() override;
 	virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	                            UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
 	                            const FHitResult& SweepResult) override;
 
 	virtual void OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	                          UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) override;
+
+	UFUNCTION()
+	virtual void OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	                          UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
+	                          const FHitResult& SweepResult);
 
 public:
 	void Equip(USceneComponent* InParent, FName SocketName);

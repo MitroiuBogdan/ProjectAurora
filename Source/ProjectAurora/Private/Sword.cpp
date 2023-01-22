@@ -12,6 +12,22 @@ ASword::ASword()
 	RootComponent = ItemMeshComponent;
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
 	BoxComponent->SetupAttachment(ItemMeshComponent);
+
+	BoxComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	BoxComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
+	BoxComponent->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
+
+	StartBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("StartBoxTrace"));
+	EndBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("EndBoxTrace"));
+
+	StartBoxTrace->SetupAttachment(ItemMeshComponent);
+	EndBoxTrace->SetupAttachment(ItemMeshComponent);
+}
+
+void ASword::BeginPlay()
+{
+	Super::BeginPlay();
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &ASword::OnBeginOverlap);
 }
 
 void ASword::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -33,6 +49,11 @@ void ASword::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("SWORD"));
 	}
+}
+
+void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+                          int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
 }
 
 
