@@ -5,6 +5,7 @@
 
 #include "Slash.h"
 #include "Components/BoxComponent.h"
+#include "Interfaces/HitInterface.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 
@@ -65,6 +66,16 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	UKismetSystemLibrary::BoxTraceSingle(this, Start, End, FVector(5.f, 5.f, 5.f),
 	                                     StartBoxTrace->GetComponentRotation(), TraceTypeQuery1, false, ActorsToIgnore,
 	                                     EDrawDebugTrace::ForDuration, BoxHit, true);
+
+
+	if (BoxHit.GetActor())
+	{
+		IHitInterface* HitObject = Cast<IHitInterface>(BoxHit.GetActor());
+		if(HitObject)
+		{
+			HitObject->GetHit(BoxHit.ImpactPoint);
+		}
+	}
 }
 
 

@@ -1474,6 +1474,12 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Sword.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
+    <Filter Include="Source\ProjectAurora\Private\Enemies">
+      <UniqueIdentifier>{28016CC6-80EF-383B-A004-7F79197D9BA8}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Enemies\Enemy.cpp">
+      <Filter>Source\ProjectAurora\Private\Enemies</Filter>
+    </ClCompile>
     <Filter Include="Source\ProjectAurora\Private\Interfaces">
       <UniqueIdentifier>{77205EF3-4151-3F2F-ACE8-C1199D4A0659}</UniqueIdentifier>
     </Filter>
@@ -1494,6 +1500,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Sword.h">
       <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\ProjectAurora\Public\Enemies">
+      <UniqueIdentifier>{3EBD464B-68A3-32BD-B628-7C16A6E0EBF4}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Enemies\Enemy.h">
+      <Filter>Source\ProjectAurora\Public\Enemies</Filter>
     </ClInclude>
     <Filter Include="Source\ProjectAurora\Public\enums">
       <UniqueIdentifier>{B43D7882-D38A-3929-BB60-3F1D4EF27902}</UniqueIdentifier>
