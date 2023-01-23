@@ -1,6 +1,8 @@
 #include "Enemies/Enemy.h"
 
 #include "Components/CapsuleComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "Materials/MaterialExpressionChannelMaskParameter.h"
 
 
 AEnemy::AEnemy()
@@ -26,7 +28,25 @@ void AEnemy::Tick(float DeltaTime)
 void AEnemy::GetHit(const FVector& ImpactPoint)
 {
 	DrawDebugSphere(GetWorld(), ImpactPoint, 10.f, 24.f, FColor::Red, false, 5.f);
-	PlayGettingHitMontage();
+
+	FVector ForwardVector = GetActorForwardVector();
+	FVector ImpactPointXY(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
+	FVector ToHit = (ImpactPointXY - GetActorLocation()).GetSafeNormal();
+
+	//FORWARD * TOHIT= |FOWARD| * |TOHIT| * COS(Angle)
+	double CosAngle = FVector::DotProduct(ForwardVector, ToHit);
+	double Angle = FMath::Acos(CosAngle);
+	//CONVERT FROM RADIANS TO DEGREES
+	Angle = FMath::RadiansToDegrees(Angle);
+	PlayGettingHitMontage(FName("REACT_BACK"));
+
+
+	FString debugMessage = FString::Printf(TEXT("Angle - %f"), Angle);
+	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Green, debugMessage);
+	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ForwardVector * 60.f, 5.f,
+	                                     FColor::Magenta, 5.f);
+	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f,
+	                                     FColor::Blue, 5.f);
 }
 
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

@@ -29,7 +29,7 @@ void AItem::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Oth
 {
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnBeginOverlap"));
+		// GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnBeginOverlap"));
 	}
 	
 	ASlash* Slash = Cast<ASlash>(OtherActor);
@@ -44,7 +44,7 @@ void AItem::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Other
 {
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnEndOverlap"));
+		// GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red,TEXT("OnEndOverlap"));
 	}
 	
 	ASlash* Slash = Cast<ASlash>(OtherActor);
