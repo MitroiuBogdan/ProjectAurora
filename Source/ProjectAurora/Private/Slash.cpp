@@ -208,6 +208,7 @@ void ASlash::SetWeaponCollisionEnabled(ECollisionEnabled::Type CollisionEnabled)
 	if (Sword && Sword->GetBoxCollision())
 	{
 		Sword->GetBoxCollision()->SetCollisionEnabled(CollisionEnabled);
+		Sword->ActorsToIgnore.Empty();
 	}
 }
 

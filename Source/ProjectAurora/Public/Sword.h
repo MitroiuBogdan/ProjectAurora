@@ -21,6 +21,8 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Sword Box")
 	class USceneComponent* EndBoxTrace;
 
+	TArray<AActor*> ActorsToIgnore;
+
 protected:
 	ASword();
 	virtual void BeginPlay() override;
