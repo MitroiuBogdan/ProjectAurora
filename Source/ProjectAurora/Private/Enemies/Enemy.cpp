@@ -38,8 +38,32 @@ void AEnemy::GetHit(const FVector& ImpactPoint)
 	double Angle = FMath::Acos(CosAngle);
 	//CONVERT FROM RADIANS TO DEGREES
 	Angle = FMath::RadiansToDegrees(Angle);
-	PlayGettingHitMontage(FName("REACT_BACK"));
 
+	FVector CrossProduct = FVector::CrossProduct(ForwardVector, ToHit);
+	if (CrossProduct.Z < 0)
+	{
+		Angle *= -1;
+	}
+
+	FName SelectionName("REACT_BACK");
+	if (Angle >= -45.f && Angle < 45)
+	{
+		SelectionName = FName("REACT_FRONT");
+	}
+	else if (Angle >= 45.f && Angle < 135.f)
+	{
+		SelectionName = FName("REACT_RIGHT");
+	}
+	else if (Angle >= -135.f && Angle < -45.f)
+	{
+		SelectionName = FName("REACT_LEFT");
+	}
+
+	PlayGettingHitMontage(SelectionName);
+
+	//DEBUG STUFF
+	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + CrossProduct * 100.f, 5.f,
+	                                     FColor::Cyan, 5.f);
 
 	FString debugMessage = FString::Printf(TEXT("Angle - %f"), Angle);
 	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Green, debugMessage);
