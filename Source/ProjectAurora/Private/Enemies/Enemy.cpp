@@ -25,10 +25,23 @@ void AEnemy::Tick(float DeltaTime)
 
 void AEnemy::GetHit(const FVector& ImpactPoint)
 {
-	DrawDebugSphere(GetWorld(), ImpactPoint,10.f,24.f, FColor::Red, false,5.f);
+	DrawDebugSphere(GetWorld(), ImpactPoint, 10.f, 24.f, FColor::Red, false, 5.f);
+	PlayGettingHitMontage();
 }
 
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void AEnemy::PlayGettingHitMontage(const FName& SectionName)
+
+{
+	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
+	if (AnimInstance && this->GettingHitMontage)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("GettingHitMontage"));
+		AnimInstance->Montage_Play(this->GettingHitMontage);
+		AnimInstance->Montage_JumpToSection(SectionName, GettingHitMontage);
+	};
 }
