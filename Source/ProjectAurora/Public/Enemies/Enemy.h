@@ -19,7 +19,8 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
 	UAnimMontage* GettingHitMontage;
-	
+	UPROPERTY(EditAnywhere, Category = "Visual Effects")
+	UParticleSystem* HitParticleSystem;
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void GetHit(const FVector& ImpactPoint) override;

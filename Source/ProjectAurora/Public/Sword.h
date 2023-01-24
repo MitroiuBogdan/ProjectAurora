@@ -17,11 +17,12 @@ public:
 	class UBoxComponent* BoxComponent;
 
 	UPROPERTY(VisibleAnywhere, Category = "Sword Box")
-	class USceneComponent* StartBoxTrace;
+	USceneComponent* StartBoxTrace;
 	UPROPERTY(VisibleAnywhere, Category = "Sword Box")
-	class USceneComponent* EndBoxTrace;
+	USceneComponent* EndBoxTrace;
 
 	TArray<AActor*> ActorsToIgnore;
+
 
 protected:
 	ASword();

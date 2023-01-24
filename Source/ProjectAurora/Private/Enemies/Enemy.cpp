@@ -1,6 +1,7 @@
 #include "Enemies/Enemy.h"
 
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Materials/MaterialExpressionChannelMaskParameter.h"
 
@@ -71,6 +72,13 @@ void AEnemy::GetHit(const FVector& ImpactPoint)
 	                                     FColor::Magenta, 5.f);
 	UKismetSystemLibrary::DrawDebugArrow(this, GetActorLocation(), GetActorLocation() + ToHit * 60.f, 5.f,
 	                                     FColor::Blue, 5.f);
+	//
+
+	if (HitParticleSystem)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(
+			GetWorld(), HitParticleSystem, ImpactPoint);
+	}
 }
 
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
