@@ -80,7 +80,7 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 		IHitInterface* HitObject = Cast<IHitInterface>(BoxHit.GetActor());
 		if (HitObject)
 		{
-			HitObject->GetHit(BoxHit.ImpactPoint);
+			HitObject->Execute_GetHit(BoxHit.GetActor(), BoxHit.ImpactPoint);
 		}
 		ActorsToIgnore.AddUnique(BoxHit.GetActor());
 		CreateField(BoxHit.ImpactPoint);

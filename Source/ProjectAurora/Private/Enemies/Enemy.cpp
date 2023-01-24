@@ -26,7 +26,7 @@ void AEnemy::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AEnemy::GetHit(const FVector& ImpactPoint)
+void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
 {
 	DrawDebugSphere(GetWorld(), ImpactPoint, 10.f, 24.f, FColor::Red, false, 5.f);
 
