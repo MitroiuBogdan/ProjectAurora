@@ -43,5 +43,8 @@ public:
 	void Equip(USceneComponent* InParent, FName SocketName);
 	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void CreateField(const FVector& FieldLocation);
+
 	FORCEINLINE UBoxComponent* GetBoxCollision() { return this->BoxComponent; }
 };

@@ -63,13 +63,13 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	TArray<AActor*> LocalACtorsToIgnore;
 	FHitResult BoxHit;
 	LocalACtorsToIgnore.Add(this);
-	
+
 	for (AActor* IgnoredActor : ActorsToIgnore)
 	{
 		LocalACtorsToIgnore.AddUnique(IgnoredActor);
 	}
 
-	
+
 	UKismetSystemLibrary::BoxTraceSingle(this, Start, End, FVector(5.f, 5.f, 5.f),
 	                                     StartBoxTrace->GetComponentRotation(), TraceTypeQuery1, false, ActorsToIgnore,
 	                                     EDrawDebugTrace::ForDuration, BoxHit, true);
@@ -83,6 +83,7 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 			HitObject->GetHit(BoxHit.ImpactPoint);
 		}
 		ActorsToIgnore.AddUnique(BoxHit.GetActor());
+		CreateField(BoxHit.ImpactPoint);
 	}
 }
 
