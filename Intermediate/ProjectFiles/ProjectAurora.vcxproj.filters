@@ -1465,6 +1465,9 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\AuroraAnimetion.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\BreakableActor.cpp">
+      <Filter>Source\ProjectAurora\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Item.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
@@ -1490,6 +1493,9 @@
       <UniqueIdentifier>{8AC4D770-FA69-34F9-A58E-816999048D3D}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\AuroraAnimetion.h">
+      <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\BreakableActor.h">
       <Filter>Source\ProjectAurora\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Item.h">
