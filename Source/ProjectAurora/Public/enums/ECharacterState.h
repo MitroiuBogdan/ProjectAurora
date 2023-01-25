@@ -22,5 +22,5 @@ UENUM(BlueprintType)
 enum class EItemState: uint8
 {
 	EIS_Equiped UMETA("Equiped State"),
-	EEI_Unequiped UMETA("Unequiped State")
+	EIS_Unequiped UMETA("Unequiped State")
 };

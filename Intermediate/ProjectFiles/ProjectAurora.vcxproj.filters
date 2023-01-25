@@ -1489,6 +1489,12 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Interfaces\HitInterface.cpp">
       <Filter>Source\ProjectAurora\Private\Interfaces</Filter>
     </ClCompile>
+    <Filter Include="Source\ProjectAurora\Private\Items">
+      <UniqueIdentifier>{0BC517E9-3BDF-3C09-9017-82EF4FEB59E2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Items\BaseEquippable.cpp">
+      <Filter>Source\ProjectAurora\Private\Items</Filter>
+    </ClCompile>
     <Filter Include="Source\ProjectAurora\Public">
       <UniqueIdentifier>{8AC4D770-FA69-34F9-A58E-816999048D3D}</UniqueIdentifier>
     </Filter>
@@ -1524,6 +1530,12 @@
     </Filter>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Interfaces\HitInterface.h">
       <Filter>Source\ProjectAurora\Public\Interfaces</Filter>
+    </ClInclude>
+    <Filter Include="Source\ProjectAurora\Public\Items">
+      <UniqueIdentifier>{79AADDC4-6D06-303F-9058-A1E10D6C1F51}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Items\BaseEquippable.h">
+      <Filter>Source\ProjectAurora\Public\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -92,7 +92,7 @@ void AEnemy::PlayGettingHitMontage(const FName& SectionName)
 	UAnimInstance* AnimInstance = this->GetMesh()->GetAnimInstance();
 	if (AnimInstance && this->GettingHitMontage)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GettingHitMontage"));
+		// UE_LOG(LogTemp, Warning, TEXT("GettingHitMontage"));
 		AnimInstance->Montage_Play(this->GettingHitMontage);
 		AnimInstance->Montage_JumpToSection(SectionName, GettingHitMontage);
 	};
