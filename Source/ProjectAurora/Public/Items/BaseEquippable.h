@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "enums/ECharacterState.h"
 #include "GameFramework/Actor.h"
 #include "BaseEquippable.generated.h"
 
@@ -10,7 +11,7 @@ class PROJECTAURORA_API ABaseEquippable : public AActor
 	GENERATED_BODY()
 
 private:
-	EItemState ItemState;
+	EItemState ItemState = EItemState::EIS_Unequiped;
 
 public:
 	ABaseEquippable();
@@ -28,7 +29,7 @@ public:
 	virtual void OnEquipped(USceneComponent* InParent, FName SocketName);
 	virtual void OnUnequipped();
 	//INLINES
-	FORCEINLINE UPrimitiveComponent* GetMesh() { MeshComponent ? MeshComponent : SkeletalMeshComponent; }
+	UPrimitiveComponent* GetMesh();
 
 private:
 	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
