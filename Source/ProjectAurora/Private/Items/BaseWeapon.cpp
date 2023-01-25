@@ -3,3 +3,12 @@
 
 #include "Items/BaseWeapon.h"
 
+void ABaseWeapon::OnEquipped(USceneComponent* InParent, FName SocketName)
+{
+	Super::OnEquipped(InParent, SocketName);
+}
+
+void ABaseWeapon::OnUnequipped()
+{
+	Super::OnUnequipped();
+}

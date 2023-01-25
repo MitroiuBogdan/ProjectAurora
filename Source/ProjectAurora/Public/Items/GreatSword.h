@@ -13,5 +13,8 @@ UCLASS()
 class PROJECTAURORA_API AGreatSword : public ABaseWeapon
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void OnEquipped(USceneComponent* InParent, FName SocketName) override;
+	virtual void OnUnequipped() override;
 };

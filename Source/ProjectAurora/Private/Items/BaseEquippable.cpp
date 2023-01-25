@@ -8,6 +8,7 @@ ABaseEquippable::ABaseEquippable()
 	PrimaryActorTick.bCanEverTick = true;
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("ItemMeshComponent");
 	SkeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>("SkeletalMeshComponent");
+	// ItemState=EItemState::EIS_Unequiped;
 }
 
 void ABaseEquippable::BeginPlay()
@@ -22,13 +23,13 @@ void ABaseEquippable::Tick(float DeltaTime)
 
 void ABaseEquippable::OnEquipped(USceneComponent* InParent, FName SocketName)
 {
-	ItemState = EItemState::EIS_Equiped;
+	// ItemState = EItemState::EIS_Equiped;
 	AttachMeshToSocket(InParent, SocketName);
 }
 
 void ABaseEquippable::OnUnequipped()
 {
-	ItemState = EItemState::EIS_Unequiped;
+	// ItemState = EItemState::EIS_Unequiped;
 }
 
 UPrimitiveComponent* ABaseEquippable::GetMesh()

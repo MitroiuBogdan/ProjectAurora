@@ -10,8 +10,6 @@ class PROJECTAURORA_API ABaseEquippable : public AActor
 {
 	GENERATED_BODY()
 
-private:
-	EItemState ItemState = EItemState::EIS_Unequiped;
 
 public:
 	ABaseEquippable();
@@ -25,11 +23,16 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
-
+	UFUNCTION(BlueprintCallable)
 	virtual void OnEquipped(USceneComponent* InParent, FName SocketName);
+	UFUNCTION(BlueprintCallable)
 	virtual void OnUnequipped();
+	
+
 	//INLINES
 	UPrimitiveComponent* GetMesh();
+	// FORCEINLINE EItemState GetItemState() { return this->ItemState; }
+	// FORCEINLINE void SetItemState(EItemState ItemState) { this->ItemState = ItemState; }
 
 private:
 	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
