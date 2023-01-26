@@ -12,7 +12,7 @@ class PROJECTAURORA_API AEnemy : public ACharacter, public IHitInterface
 
 public:
 	AEnemy();
-	
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -21,6 +21,10 @@ private:
 	UAnimMontage* GettingHitMontage;
 	UPROPERTY(EditAnywhere, Category = "Visual Effects")
 	UParticleSystem* HitParticleSystem;
+
+	UPROPERTY(VisibleAnywhere, Category="Actor Attributes")
+	class UAttributeComponent* Attributes;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void GetHit_Implementation(const FVector& ImpactPoint) override;

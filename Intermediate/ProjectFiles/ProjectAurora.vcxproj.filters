@@ -1477,6 +1477,12 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Sword.cpp">
       <Filter>Source\ProjectAurora\Private</Filter>
     </ClCompile>
+    <Filter Include="Source\ProjectAurora\Private\Components">
+      <UniqueIdentifier>{7DE5B04D-7FF1-3FE1-9B69-745B8C0B48BE}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Components\AttributeComponent.cpp">
+      <Filter>Source\ProjectAurora\Private\Components</Filter>
+    </ClCompile>
     <Filter Include="Source\ProjectAurora\Private\Enemies">
       <UniqueIdentifier>{28016CC6-80EF-383B-A004-7F79197D9BA8}</UniqueIdentifier>
     </Filter>
@@ -1518,6 +1524,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Sword.h">
       <Filter>Source\ProjectAurora\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\ProjectAurora\Public\Components">
+      <UniqueIdentifier>{0D8AC52F-B6C6-31B4-8283-61FBF417E56E}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Components\AttributeComponent.h">
+      <Filter>Source\ProjectAurora\Public\Components</Filter>
     </ClInclude>
     <Filter Include="Source\ProjectAurora\Public\Enemies">
       <UniqueIdentifier>{3EBD464B-68A3-32BD-B628-7C16A6E0EBF4}</UniqueIdentifier>
