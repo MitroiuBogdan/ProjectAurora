@@ -17,6 +17,7 @@ AEnemy::AEnemy()
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Actor Attributes"));
+	HealthBarWidget=C
 }
 
 void AEnemy::BeginPlay()

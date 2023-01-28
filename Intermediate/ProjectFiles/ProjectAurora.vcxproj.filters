@@ -1483,6 +1483,9 @@
     <ClCompile Include="..\..\Source\ProjectAurora\Private\Components\AttributeComponent.cpp">
       <Filter>Source\ProjectAurora\Private\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectAurora\Private\Components\HealthBar.cpp">
+      <Filter>Source\ProjectAurora\Private\Components</Filter>
+    </ClCompile>
     <Filter Include="Source\ProjectAurora\Private\Enemies">
       <UniqueIdentifier>{28016CC6-80EF-383B-A004-7F79197D9BA8}</UniqueIdentifier>
     </Filter>
@@ -1529,6 +1532,9 @@
       <UniqueIdentifier>{0D8AC52F-B6C6-31B4-8283-61FBF417E56E}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\ProjectAurora\Public\Components\AttributeComponent.h">
+      <Filter>Source\ProjectAurora\Public\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectAurora\Public\Components\HealthBar.h">
       <Filter>Source\ProjectAurora\Public\Components</Filter>
     </ClInclude>
     <Filter Include="Source\ProjectAurora\Public\Enemies">
