@@ -12,6 +12,10 @@ class PROJECTAURORA_API ASword : public AItem
 	GENERATED_BODY()
 	EItemState SwordState;
 
+private:
+	UPROPERTY(EditAnywhere, Category="Weapon Properties")
+	float Damage = 10.f;
+
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sword Box")
 	class UBoxComponent* BoxComponent;
@@ -22,7 +26,6 @@ public:
 	USceneComponent* EndBoxTrace;
 
 	TArray<AActor*> ActorsToIgnore;
-
 
 protected:
 	ASword();
@@ -40,7 +43,7 @@ protected:
 	                          const FHitResult& SweepResult);
 
 public:
-	void Equip(USceneComponent* InParent, FName SocketName);
+	void Equip(USceneComponent* InParent, FName SocketName, AActor* NewOwner, APawn* NewInstigator);
 	void AttachMeshToSocket(USceneComponent* InParent, FName SocketName);
 
 	UFUNCTION(BlueprintImplementableEvent)

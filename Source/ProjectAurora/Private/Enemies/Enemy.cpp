@@ -24,9 +24,11 @@ AEnemy::AEnemy()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	if(HealthBarComponent)
+	if (HealthBarComponent && Attributes)
 	{
-		HealthBarComponent->SetHealthPercent(.5f);
+		Attributes->SetMaxHealth(100);
+		Attributes->SetHealth(100);
+		HealthBarComponent->SetHealthPercent(Attributes->GetHealthPercent());
 	}
 }
 
@@ -93,6 +95,20 @@ void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator,
+                         AActor* DamageCauser)
+{
+	// return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	if (Attributes && HealthBarComponent)
+	{
+		Attributes->ReceiveDamage(DamageAmount);
+		HealthBarComponent->SetHealthPercent(Attributes->GetHealthPercent());
+	}
+
+	return DamageAmount;
 }
 
 void AEnemy::PlayGettingHitMontage(const FName& SectionName)

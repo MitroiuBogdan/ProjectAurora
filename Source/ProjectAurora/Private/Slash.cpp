@@ -96,7 +96,8 @@ void ASlash::FKeyPressed()
 	if (OverlappingWeapon && CharacterState == ECharacterState::ECS_Unequipped && Sword == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("FKeyPressed - OverlappingWeapon"));
-		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"));
+		OverlappingWeapon->Equip(this->GetMesh(), FName("hand_r_socket"), this, this);
+
 		this->Sword = OverlappingWeapon;
 		this->Sword->GetBoxCollision()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		this->CharacterState = ECharacterState::ECS_EquippedOneHanded;

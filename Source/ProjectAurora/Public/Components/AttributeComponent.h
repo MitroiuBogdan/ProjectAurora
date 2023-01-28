@@ -26,4 +26,10 @@ protected:
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
+
+	FORCEINLINE void SetMaxHealth(float Value) { this->MaxHealth = Value; }
+	FORCEINLINE void SetHealth(float Value) { this->Health = Value; }
+
+	void ReceiveDamage(float Damage);
+	float GetHealthPercent();
 };

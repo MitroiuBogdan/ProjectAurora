@@ -6,6 +6,7 @@
 #include "Slash.h"
 #include "Components/BoxComponent.h"
 #include "Interfaces/HitInterface.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 
@@ -84,15 +85,25 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 		}
 		ActorsToIgnore.AddUnique(BoxHit.GetActor());
 		CreateField(BoxHit.ImpactPoint);
+
+		//Apply DMG
+		UGameplayStatics::ApplyDamage(
+			BoxHit.GetActor(),
+			Damage,
+			GetInstigator()->GetController(),
+			this,
+			UDamageType::StaticClass());
 	}
 }
 
-
-void ASword::Equip(USceneComponent* InParent, FName SocketName)
+void ASword::Equip(USceneComponent* InParent, FName SocketName, AActor* NewOwner, APawn* NewInstigator)
 {
+	SetOwner(NewOwner);
+	SetInstigator(NewInstigator);
 	AttachMeshToSocket(InParent, SocketName);
 	SwordState = EItemState::EIS_Equiped;
 }
+
 
 void ASword::AttachMeshToSocket(USceneComponent* InParent, FName SocketName)
 {
