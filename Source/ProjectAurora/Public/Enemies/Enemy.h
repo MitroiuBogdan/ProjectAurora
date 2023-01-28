@@ -25,7 +25,8 @@ private:
 	UPROPERTY(VisibleAnywhere, Category="Actor Attributes")
 	class UAttributeComponent* Attributes;
 
-	class UWidgetComponent* HealthBarWidget;
+	UPROPERTY(VisibleAnywhere)
+	class UHealthBarComponent* HealthBarComponent;
 
 public:
 	virtual void Tick(float DeltaTime) override;

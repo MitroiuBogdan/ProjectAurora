@@ -2,9 +2,9 @@
 
 #include "Components/AttributeComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/HealthBarComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Materials/MaterialExpressionChannelMaskParameter.h"
 
 
 AEnemy::AEnemy()
@@ -15,14 +15,19 @@ AEnemy::AEnemy()
 	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	GetMesh()->SetGenerateOverlapEvents(true);
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
-	
+
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Actor Attributes"));
-	HealthBarWidget=C
+	HealthBarComponent = CreateDefaultSubobject<UHealthBarComponent>(TEXT("HealthBarComponent"));
+	HealthBarComponent->SetupAttachment(GetRootComponent());
 }
 
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+	if(HealthBarComponent)
+	{
+		HealthBarComponent->SetHealthPercent(.5f);
+	}
 }
 
 void AEnemy::Tick(float DeltaTime)
