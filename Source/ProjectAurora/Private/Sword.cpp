@@ -78,14 +78,6 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 
 	if (BoxHit.GetActor())
 	{
-		IHitInterface* HitObject = Cast<IHitInterface>(BoxHit.GetActor());
-		if (HitObject)
-		{
-			HitObject->Execute_GetHit(BoxHit.GetActor(), BoxHit.ImpactPoint);
-		}
-		ActorsToIgnore.AddUnique(BoxHit.GetActor());
-		CreateField(BoxHit.ImpactPoint);
-
 		//Apply DMG
 		UGameplayStatics::ApplyDamage(
 			BoxHit.GetActor(),
@@ -93,6 +85,15 @@ void ASword::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 			GetInstigator()->GetController(),
 			this,
 			UDamageType::StaticClass());
+		
+		IHitInterface* HitObject = Cast<IHitInterface>(BoxHit.GetActor());
+		if (HitObject)
+		{
+			HitObject->Execute_GetHit(BoxHit.GetActor(), BoxHit.ImpactPoint);
+		}
+		ActorsToIgnore.AddUnique(BoxHit.GetActor());
+		// CreateField(BoxHit.ImpactPoint);
+		
 	}
 }
 

@@ -14,7 +14,7 @@ class PROJECTAURORA_API ASword : public AItem
 
 private:
 	UPROPERTY(EditAnywhere, Category="Weapon Properties")
-	float Damage = 10.f;
+	float Damage = 30.f;
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sword Box")

@@ -19,6 +19,9 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
 	UAnimMontage* GettingHitMontage;
+	UPROPERTY(EditDefaultsOnly, Category= Montages)
+	UAnimMontage* DeathMontage;
+	
 	UPROPERTY(EditAnywhere, Category = "Visual Effects")
 	UParticleSystem* HitParticleSystem;
 
@@ -37,4 +40,6 @@ public:
 	                         class AController* EventInstigator, AActor* DamageCauser) override;
 	//Montages functions
 	void PlayGettingHitMontage(const FName& SectionName);
+	void PlayDeathMontage(const FName& SectionName);
+	void Die();
 };
