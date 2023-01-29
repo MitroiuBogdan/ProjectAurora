@@ -29,12 +29,22 @@ void AEnemy::BeginPlay()
 		Attributes->SetMaxHealth(100);
 		Attributes->SetHealth(100);
 		HealthBarComponent->SetHealthPercent(Attributes->GetHealthPercent());
+		HealthBarComponent->SetVisibility(false);
 	}
 }
 
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (CombatTarget)
+	{
+		double CombatDistance = (CombatTarget->GetActorLocation() - GetActorLocation()).Size();
+		if (CombatRadius < CombatDistance)
+		{
+			CombatTarget = nullptr;
+			HealthBarComponent->SetVisibility(false);
+		}
+	}
 }
 
 void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
@@ -43,6 +53,7 @@ void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
 
 	if (Attributes && Attributes->IsAlive())
 	{
+		HealthBarComponent->SetVisibility(true);
 		FVector ForwardVector = GetActorForwardVector();
 		FVector ImpactPointXY(ImpactPoint.X, ImpactPoint.Y, GetActorLocation().Z);
 		FVector ToHit = (ImpactPointXY - GetActorLocation()).GetSafeNormal();
@@ -89,6 +100,7 @@ void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
 	else
 	{
 		Die();
+		HealthBarComponent->SetVisibility(false);
 	}
 
 
@@ -114,6 +126,8 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 		Attributes->ReceiveDamage(DamageAmount);
 		HealthBarComponent->SetHealthPercent(Attributes->GetHealthPercent());
 	}
+
+	CombatTarget = EventInstigator->GetPawn();
 
 	return DamageAmount;
 }

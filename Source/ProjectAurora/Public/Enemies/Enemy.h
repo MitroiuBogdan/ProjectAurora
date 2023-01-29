@@ -21,7 +21,7 @@ private:
 	UAnimMontage* GettingHitMontage;
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
 	UAnimMontage* DeathMontage;
-	
+
 	UPROPERTY(EditAnywhere, Category = "Visual Effects")
 	UParticleSystem* HitParticleSystem;
 
@@ -30,6 +30,12 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	class UHealthBarComponent* HealthBarComponent;
+
+	UPROPERTY()
+	AActor* CombatTarget;
+
+	UPROPERTY(EditAnywhere)
+	double CombatRadius = 900;
 
 public:
 	virtual void Tick(float DeltaTime) override;
