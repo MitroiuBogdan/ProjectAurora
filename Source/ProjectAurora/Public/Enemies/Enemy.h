@@ -37,6 +37,15 @@ private:
 	UPROPERTY(EditAnywhere)
 	double CombatRadius = 900;
 
+	// Navigation
+	// Current Patrol Target
+	UPROPERTY()
+	class AAIController* EnemyController;
+	UPROPERTY(EditInstanceOnly, Category="AI Navigation")
+	AActor* PatrolTarget;
+	UPROPERTY(EditInstanceOnly, Category="AI Navigation")
+	TArray<AActor*> PatrolTargets;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void GetHit_Implementation(const FVector& ImpactPoint) override;

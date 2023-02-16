@@ -1,10 +1,13 @@
 #include "Enemies/Enemy.h"
 
+#include "AIController.h"
+#include "VectorUtil.h"
 #include "Components/AttributeComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/HealthBarComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "NavMesh/NavMeshPath.h"
 
 
 AEnemy::AEnemy()
@@ -30,6 +33,24 @@ void AEnemy::BeginPlay()
 		Attributes->SetHealth(100);
 		HealthBarComponent->SetHealthPercent(Attributes->GetHealthPercent());
 		HealthBarComponent->SetVisibility(false);
+	}
+
+	EnemyController = Cast<AAIController>(GetController());
+	if (EnemyController && PatrolTarget)
+	{
+		FAIMoveRequest FaiMoveRequest;
+		FaiMoveRequest.SetGoalActor(PatrolTarget);
+		FaiMoveRequest.SetAcceptanceRadius(15.f);
+
+		FNavPathSharedPtr PathSharedPtr;
+
+		EnemyController->MoveTo(FaiMoveRequest, &PathSharedPtr);
+		TArray<FNavPathPoint>& PathPoints = PathSharedPtr->GetPathPoints();
+		for (auto& Point : PathPoints)
+		{
+			const FVector& Location = Point.Location;
+			DrawDebugSphere(GetWorld(), Location, 15, 15, FColor::Blue, false, 100);
+		}
 	}
 }
 
