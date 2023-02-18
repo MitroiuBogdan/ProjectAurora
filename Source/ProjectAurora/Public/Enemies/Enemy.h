@@ -15,6 +15,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	bool InTargetRange(AActor* Target, double Radius);
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category= Montages)
@@ -37,6 +38,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	double CombatRadius = 900;
 
+
 	// Navigation
 	// Current Patrol Target
 	UPROPERTY()
@@ -45,6 +47,12 @@ private:
 	AActor* PatrolTarget;
 	UPROPERTY(EditInstanceOnly, Category="AI Navigation")
 	TArray<AActor*> PatrolTargets;
+	UPROPERTY(EditAnywhere)
+	double PatrolRadius = 200.f;
+
+	//Timer
+	FTimerHandle PatrolTimerHandle;
+	void PatrolTargetFinished();
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -57,4 +65,5 @@ public:
 	void PlayGettingHitMontage(const FName& SectionName);
 	void PlayDeathMontage(const FName& SectionName);
 	void Die();
+	void MoveToTarget(AActor* Target);
 };
