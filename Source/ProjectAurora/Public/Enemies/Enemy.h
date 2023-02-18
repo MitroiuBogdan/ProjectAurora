@@ -53,6 +53,7 @@ private:
 	//Timer
 	FTimerHandle PatrolTimerHandle;
 	void PatrolTargetFinished();
+	AActor* ChoosePatrolTarget();
 
 public:
 	virtual void Tick(float DeltaTime) override;

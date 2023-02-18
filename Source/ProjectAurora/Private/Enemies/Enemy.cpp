@@ -36,9 +36,9 @@ void AEnemy::BeginPlay()
 	}
 
 	EnemyController = Cast<AAIController>(GetController());
-	// MoveToTarget(PatrolTarget);
+	MoveToTarget(PatrolTarget);
 
-	GetWorldTimerManager().SetTimer(PatrolTimerHandle, this, &AEnemy::PatrolTargetFinished, 5.f);
+	// GetWorldTimerManager().SetTimer(PatrolTimerHandle, this, &AEnemy::PatrolTargetFinished, 5.f);
 }
 
 bool AEnemy::InTargetRange(AActor* Target, double Radius)
@@ -52,6 +52,21 @@ void AEnemy::PatrolTargetFinished()
 	MoveToTarget(PatrolTarget);
 }
 
+AActor* AEnemy::ChoosePatrolTarget()
+{
+	if (PatrolTarget && EnemyController)
+	{
+		const int32 NumPatrolTargets = PatrolTargets.Num();
+		if (NumPatrolTargets > 0)
+		{
+			const int32 TargetSelection = FMath::RandRange(0, NumPatrolTargets - 1);
+			AActor* Target = PatrolTargets[TargetSelection];
+			return Target;
+		}
+	}
+	return nullptr;
+}
+
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -61,31 +76,11 @@ void AEnemy::Tick(float DeltaTime)
 		HealthBarComponent->SetVisibility(false);
 	}
 
-	// if (PatrolTarget && EnemyController && InTargetRange(PatrolTarget, PatrolRadius))
-	// {
-	// 	const int32 NumPatrolTargets = PatrolTargets.Num();
-	// 	if (NumPatrolTargets > 0)
-	// 	{
-	// 		const int32 TargetSelection = FMath::RandRange(0, NumPatrolTargets - 1);
-	// 		AActor* Target = PatrolTargets[TargetSelection];
-	// 		PatrolTarget = Target;
-	//
-	// 		FAIMoveRequest FaiMoveRequest;
-	// 		FaiMoveRequest.SetGoalActor(PatrolTarget);
-	// 		FaiMoveRequest.SetAcceptanceRadius(15.f);
-	//
-	// 		FNavPathSharedPtr PathSharedPtr;
-	//
-	// 		EnemyController->MoveTo(FaiMoveRequest, &PathSharedPtr);
-	//
-	// 		TArray<FNavPathPoint>& PathPoints = PathSharedPtr->GetPathPoints();
-	// 		for (auto& Point : PathPoints)
-	// 		{
-	// 			const FVector& Location = Point.Location;
-	// 			DrawDebugSphere(GetWorld(), Location, 15, 15, FColor::Blue, false, 100);
-	// 		}
-	// 	}
-	// }
+	if (PatrolTarget && EnemyController && InTargetRange(PatrolTarget, PatrolRadius))
+	{
+		PatrolTarget = ChoosePatrolTarget();
+		GetWorldTimerManager().SetTimer(PatrolTimerHandle, this, &AEnemy::PatrolTargetFinished, 5.f);
+	}
 }
 
 void AEnemy::GetHit_Implementation(const FVector& ImpactPoint)
